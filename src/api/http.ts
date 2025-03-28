@@ -1,9 +1,9 @@
-import axios, {AxiosInstance} from 'axios';
+import axios, {AxiosInstance, AxiosRequestConfig} from 'axios';
 
 export class Http {
   private client: AxiosInstance;
 
-  constructor(options) {
+  constructor(options: AxiosRequestConfig) {
     this.client = axios.create({
       'baseURL': options.baseURL,
     });
@@ -14,14 +14,14 @@ export class Http {
       // console.log(res.data);
       return res.data;
     } catch (err) {
-      this.logError(err);
+      this.logError(err as Error);
     }
   }
   async deleteList() {
     try {
       await this.client.delete('/list');
     } catch (err) {
-      this.logError(err);
+      this.logError(err as Error);
     }
   }
   async addListItem(content: string) {
@@ -31,7 +31,7 @@ export class Http {
       });
       // console.log(todoList.value);
     } catch (err) {
-      this.logError(err);
+      this.logError(err as Error);
     }
   }
   async updateListItem(id: number, content: string) {
@@ -40,14 +40,14 @@ export class Http {
         'user_data': content,
       });
     } catch (err) {
-      this.logError(err);
+      this.logError(err as Error);
     }
   }
   async deleteListItem(id: number) {
     try {
       await this.client.delete(`list/${id}`);
     } catch (err) {
-      this.logError(err);
+      this.logError(err as Error);
     }
   }
   logError(err: Error) {

@@ -24,7 +24,7 @@ export const useListStore = defineStore('listStore', () => {
 
   const bufferID = ref<number | null>();
   const bufferContent = ref<string>();
-  const editBuffer = (id: number, content: string) => {
+  const editBuffer = (id: number | null, content: string) => {
     bufferID.value = id;
     bufferContent.value = content;
   };
@@ -39,7 +39,7 @@ export const useListStore = defineStore('listStore', () => {
     // console.log('HERE');
   };
   const updateListItem = async (id: number, content: string | undefined) => {
-    await client.updateListItem(id, content);
+    if (content) await client.updateListItem(id, content);
     await updateList();
     editBuffer(null, '');
   };
