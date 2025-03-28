@@ -7,7 +7,7 @@ const pass = ref<string>();
 
 const signUp = async () => {
   try {
-    await axios.post(`http://${document.location.hostname}:8247/auth/sign_up`, {
+    await axios.post(`http://${document.location.hostname}:8080/auth/sign_up`, {
       'login': login.value,
       'pass': pass.value
     });
@@ -17,7 +17,7 @@ const signUp = async () => {
 };
 const logIn = async () => {
   try {
-    await axios.post(`http://${document.location.hostname}:8247/auth/log_in`, {
+    await axios.post(`http://${document.location.hostname}:8080/auth/log_in`, {
       'login': login.value,
       'pass': pass.value
     });

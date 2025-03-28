@@ -14,7 +14,7 @@ import {TodoList} from '../types.ts';
 
 export const useListStore = defineStore('listStore', () => {
   const client = new Http({
-    'baseURL': `http://${document.location.hostname}:8247`,
+    'baseURL': `http://${document.location.hostname}:8080`,
   });
 
   const list = ref<TodoList>({
